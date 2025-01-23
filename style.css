@@ -1,0 +1,205 @@
+/* Global Variables */
+:root {
+    --primary-color: #5d7b8d;  /* Softer blue-gray */
+    --secondary-color: #7f8c8d;  /* Muted gray */
+    --accent-color: #4a9fc7;  /* Lighter, softer blue */
+    --background-light: #f4f6f7;  /* Very soft, light gray */
+    --text-color: #2c3e50;  /* Slightly softened dark text */
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-light);
+    margin: 0;  /* Remove any unwanted body margins */
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;  /* Fix it at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);  /* Set background color */
+    color: white;
+    display: flex;  /* Flexbox for layout */
+    justify-content: space-between;  /* Space out navbar items */
+    align-items: center;  /* Center items vertically */
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    z-index: 1000;  /* Keep it on top of other elements */
+
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;  /* Smooth color change */
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);  /* Change color on hover */
+}
+
+/* Main Container Layout */
+.container {
+    display: flex;
+    margin-top: 70px;  /* Space for fixed navbar */
+    min-height: calc(100vh - 120px);  /* Fill the remaining screen space */
+}
+
+/* Left Menu Styles */
+.left-menu {
+    width: 250px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    transition: width 0.3s ease;  /* Smooth width transition */
+    position: fixed;  /* Fixed on the left */
+    top: 70px;  /* To give space for the navbar */
+    left: 0;
+    bottom: 0;
+    z-index: 999;  /* Keep it above other content */
+}
+
+.left-menu.collapsed {
+    width: 60px;
+    overflow: hidden;
+}
+
+.left-menu ul {
+    list-style: none;
+}
+
+.left-menu li {
+    margin-bottom: 15px;
+}
+
+.left-menu a {
+    color: var(--secondary-color);  /* Soft gray color */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.left-menu a:hover {
+    color: var(--accent-color);  /* Highlight on hover */
+}
+
+#toggle-menu {
+    
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+#toggle-menu:hover {
+    color: var(--accent-color);  /* Add a hover effect */
+}
+
+/* Main Content Styles */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);  /* Subtle shadow */
+    margin-left: 270px;  /* Leave space for the left menu */
+    margin-right: 270px;  /* Leave space for the right panel */
+    transition: margin-left 0.3s ease;  /* Smooth transition for layout change */
+    margin-top: 70px;  /* To give space for the navbar */
+}
+
+/* Right Panel Styles */
+.right-panel {
+    width: 250px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 70px;
+    right: 0;
+    bottom: 0;
+    z-index: 998;  /* Keep it below the left menu */}
+
+/* Footer Styles */
+.footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;  /* Stack the layout for small screens */
+    }
+
+    .left-menu, .right-panel {
+        width: 100%;  /* Take full width on small screens */
+    }
+}
+
+/* Icon and Label Styling */
+.left-menu i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.menu-label {
+    display: inline-block;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+/* Initially hide labels when the menu is collapsed */
+.left-menu.collapsed .menu-label {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.left-menu.collapsed i {
+    margin-right: 0;  /* Adjust icon spacing when collapsed */
+}
+
+/* Style for when the menu is expanded */
+.left-menu:not(.collapsed) .menu-label {
+    opacity: 1;
+    visibility: visible;
+}
